@@ -5,7 +5,7 @@
   "identifier": "com.tauri-deno",
   "build": {
     "devUrl": "http://localhost:3001",
-    "beforeBuildCommand": "npm build:client",
+    "beforeBuildCommand": "npm run build:apps",
     "frontendDist": "../apps/client/dist"
   },
   "app": {

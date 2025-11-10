@@ -6,7 +6,7 @@
     "tauri:dev": "tauri dev",
     "tauri:build": "tauri build",
     "tauri:build:debug": "tauri build --debug",
-    "build:client": "npm run build --workspace=apps/client",
+    "build:apps":"npm run build --workspace=apps/client && cd apps/server && deno run compile",
     "tsc:check": "tsc --noEmit --skipLibCheck"
   },
   "devDependencies": {
