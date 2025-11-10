@@ -20,7 +20,7 @@ function handleCors(_: Request, res: Response) {
 
 Deno.serve(
   {
-    port: !Number.isNaN(PORT) ? +PORT : 3000,
+    port: !Number.isNaN(PORT) ? +PORT : DEFAULT_PORT,
     hostname: '127.0.0.1',
     onListen: (server) => {
       // biome-ignore lint/suspicious/noConsole: <>
