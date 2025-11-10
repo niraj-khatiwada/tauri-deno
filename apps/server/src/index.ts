@@ -2,9 +2,9 @@
 import process from 'node:process'
 
 import { authMiddleware } from './middleware.ts'
-import { intiRustIpc } from './rust-ipc.ts'
+import { listenRustIPC } from './rust-ipc.ts'
 
-intiRustIpc()
+listenRustIPC()
 
 const DEFAULT_PORT = 3000
 const PORT = process.env['PORT'] ?? `${DEFAULT_PORT}`
