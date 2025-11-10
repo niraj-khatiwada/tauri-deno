@@ -1,11 +1,12 @@
 {
   "name": "tauri-deno",
   "private": true,
+  "workspaces": ["apps/*"],
   "scripts": {
     "tauri:dev": "tauri dev",
     "tauri:build": "tauri build",
     "tauri:build:debug": "tauri build --debug",
-    "build:client": "pnpm --filter client build",
+    "build:client": "npm run build --workspace=apps/client",
     "tsc:check": "tsc --noEmit --skipLibCheck"
   },
   "devDependencies": {
