@@ -1,0 +1,25 @@
+{
+  "name": "tauri-deno",
+  "private": true,
+  "scripts": {
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build",
+    "tauri:build:debug": "tauri build --debug",
+    "compile": "deno run ./scripts/compile.ts",
+    "tsc:check": "tsc --noEmit --skipLibCheck"
+  },
+  "devDependencies": {
+    "husky": "^8.0.1",
+    "@biomejs/biome": "2.3.2",
+    "typescript": "^5.7.2",
+    "@tauri-apps/cli": "^2.9.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts,jsx,tsx}": ["biome check --write"]
+  }
+}
