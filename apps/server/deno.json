@@ -1,7 +1,9 @@
 {
-  "name": "tauri-deno",
+  "$schema": "https://raw.githubusercontent.com/denoland/deno/refs/heads/main/cli/schemas/config-file.v1.json",
+  "name": "server",
   "tasks": {
-    "dev": "deno run --watch src/index.ts",
+    "run:base": "deno run --allow-read --allow-net --allow-env",
+    "dev": "deno task run:base --watch src/index.ts",
     "compile": "deno run --allow-run ./scripts/compile.ts"
   },
   "imports": {

@@ -1,9 +1,17 @@
 /// <reference lib="deno.ns" />
 /** biome-ignore-all lint/suspicious/noConsole: <> */
-import packageJson from '../deno.json' with { type: 'json' }
+
+/**
+ * Compile the packages/server to use as a sidecar in Tauri
+ */
+import path from 'node:path'
+
+import packageJson from '../../../package.json' with { type: 'json' }
+import denoJson from '../deno.json' with { type: 'json' }
 
 const BINARY_NAME = `${packageJson.name}-sidecar`
-const OUTDIR = '../../tauri/bin'
+const OUTDIR = path.join(import.meta.dirname!, '..', '..', '..', 'tauri', 'bin')
+
 const OUTFILE = `${OUTDIR}/${BINARY_NAME}-{binary_postfix}`
 
 async function main() {
@@ -15,8 +23,13 @@ async function main() {
 
   console.log('\x1b[34mCompiling server with Deno...\x1b[0m')
 
+  const permissions = denoJson.tasks['run:base']
+    .slice('deno run'.length)
+    .trim()
+    .split(' ')
+
   const cmd = new Deno.Command('deno', {
-    args: ['compile', '--allow-all', '--output', outfile, 'src/index.ts'],
+    args: ['compile', ...permissions, '--output', outfile, 'src/index.ts'],
     stdout: 'inherit',
     stderr: 'inherit',
   })

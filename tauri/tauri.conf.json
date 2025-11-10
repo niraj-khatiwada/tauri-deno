@@ -5,8 +5,8 @@
   "identifier": "com.tauri-deno",
   "build": {
     "devUrl": "http://localhost:3001",
-    "beforeBuildCommand": "pnpm compile",
-    "frontendDist": "../packages/client/dist"
+    "beforeBuildCommand": "pnpm build:client",
+    "frontendDist": "../apps/client/dist"
   },
   "app": {
     "windows": [
